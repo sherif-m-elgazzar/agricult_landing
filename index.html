@@ -167,7 +167,7 @@
 
         <dt class="col-5 col-sm-4 text-muted fw-semibold text-sm-end">Contact</dt>
         <dd class="col-7 col-sm-8 mb-0">
-          <a href="mailto:support@agrimanage.com">support@agrimanage.com</a>
+          <a href="agricult@zohomail.com">agricult@zohomail.com</a>
         </dd>
 
         <dt class="col-5 col-sm-4 text-muted fw-semibold text-sm-end">Purpose</dt>
@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", function() {
       </div>
       <!-- Form -->
       <div class="col-lg-6 col-12 mt-5 mt-lg-0">
-        <form action="#" method="post" class="custom-form contact-form bg-white p-4 rounded-4 shadow-lg" role="form">
+        <form onsubmit="sendMail(event)" method="post" class="custom-form contact-form bg-white p-4 rounded-4 shadow-lg" role="form">
           <div class="row g-3">
 
             <!-- Name -->
@@ -440,6 +440,24 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
   </div>
 </section>
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script>
+(function(){
+    emailjs.init("OCP5ATtnOJTuZ4u9T"); // Replace with your Public Key
+})();
+
+function sendMail(e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_jnl7enp", "template_pmkpz9t", e.target)
+        .then(() => {
+            alert("✅ Message sent successfully!");
+            e.target.reset();
+        }, (error) => {
+            alert("❌ Failed to send message. " + JSON.stringify(error));
+        });
+}
+</script>
 
 <style>
 .icon-checkbox {
